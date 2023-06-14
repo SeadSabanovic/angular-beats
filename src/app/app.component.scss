@@ -1,0 +1,64 @@
+:host {
+  position: relative;
+  height: 100vh;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 8px;
+    width: 100%;
+
+    &:not(:last-of-type) {
+      margin-bottom: 8px;
+    }
+
+    &::before {
+      z-index: -1;
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ae6dab;
+      opacity: 0.3;
+    }
+  }
+
+  .dot {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    background-color: #efefdc;
+    border-radius: 50%;
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--active {
+      background-color: #da62cf;
+    }
+  }
+
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2px;
+    background-color: #ae6dab;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+}

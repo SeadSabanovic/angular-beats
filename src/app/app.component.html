@@ -1,0 +1,9 @@
+<div class="progress" #progress></div>
+<div class="row" *ngFor="let key of dots | keyvalue">
+  <div
+    class="dot"
+    [ngClass]="{ 'dot--active': dot.active }"
+    *ngFor="let dot of key.value"
+    (click)="dot.active = !dot.active"
+  ></div>
+</div>
