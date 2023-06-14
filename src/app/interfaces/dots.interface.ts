@@ -1,7 +1,8 @@
 import { Dot } from "./dot.interface";
 
 export interface Dots {
-  drum: Dot[],
-  bass: Dot[],
-  whistle: Dot[],
+  kick: Dot[],
+  hat: Dot[],
+  snare: Dot[],
+  perc: Dot[],
 }

@@ -11,11 +11,12 @@ export class AppComponent implements AfterViewInit {
   @ViewChild('progress') progressEl!: ElementRef;
   timeline!: gsap.core.Timeline;
   dots: Dots = {
-    drum: [],
-    bass: [],
-    whistle: [],
+    kick: [],
+    hat: [],
+    snare: [],
+    perc: [],
   };
-  numberOfDots = 10;
+  numberOfDots = 16;
 
   // Add initial dots
   ngAfterViewInit(): void {
@@ -33,7 +34,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   calculateMiddlePoints() {
-    const segmentSize = 100 / (this.numberOfDots + 1);
+    const segmentSize = 100 / this.numberOfDots;
     const middlePoints = [];
 
     for (let i = 1; i <= this.numberOfDots; i++) {
@@ -48,8 +49,9 @@ export class AppComponent implements AfterViewInit {
     // Iterate over the properties
     for (const key in this.dots) {
       if (this.dots.hasOwnProperty(key)) {
-        if (this.dots[key as keyof Dots][milestone].active)
+        if (this.dots[key as keyof Dots][milestone].active) {
           this.playInstrument(key);
+        }
       }
     }
   }
@@ -70,10 +72,11 @@ export class AppComponent implements AfterViewInit {
     this.timeline.set(this.progressEl.nativeElement, {
       left: 0,
     });
+
     const progressEl = this.progressEl.nativeElement;
     this.timeline.to(progressEl, {
       left: '100%',
-      duration: 5,
+      duration: 3,
       ease: 'none',
     });
 
